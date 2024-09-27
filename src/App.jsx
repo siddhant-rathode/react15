@@ -1,19 +1,36 @@
-import { useState } from "react"
+import React, { useState } from 'react'
 
 const App = () => {
-  
-  const [user,setuser] = useState("jhon")
-  
-  const changeuser = () => {
-    setuser("jhony")
-  };
-  console.log(user);
 
+  const [user, setuser] = useState('')
+
+  const SumbitHandler = (e) => {
+    e.preventDefault();
+    const {firstname, lastname, username, contact, email} = e.target;
+    
+    const user = {
+      username: username.value,
+      lastname: lastname.value,
+      email: email.value,
+      contact: contact.value
+    }
+    console.log(user);
+
+  };
 
   return (
     <div>
-      <h1 className="m-5 text-3xl font-bold ">{user}</h1>
-      <button onClick={changeuser} className="p-1 m-3 bg-gray-500" >click on button</button>
+      <form onSubmit={SumbitHandler}>
+
+      <input className='my-5 bg-gray-500' type="text" name='firstname' placeholder='firstname' /> <br />
+      <input className='my-5 bg-gray-500' type="text" name='lastname' placeholder='lastname' /> <br />
+      <input className='my-5 bg-gray-500' type="text" name='username' placeholder='username' /> <br />
+      <input className='my-5 bg-gray-500' type="text" name='email' placeholder='email' /> <br />
+      <input className='my-5 bg-gray-500' type="text" name='contact' placeholder='contact' /> <br />
+      <button className='bg-red-400'>submit</button>
+      
+      </form>
+      
     </div>
   )
 }
