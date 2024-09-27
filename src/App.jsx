@@ -1,36 +1,31 @@
-import React, { useState } from 'react'
+import { useState } from "react"
 
 const App = () => {
 
-  const [user, setuser] = useState('')
+  // two way binding....
 
-  const SumbitHandler = (e) => {
-    e.preventDefault();
-    const {firstname, lastname, username, contact, email} = e.target;
+  const [username, setusername] = useState("")
+
+  // const ChangeHandler = (e) => { 
+  //   setusername(e.target.value)
+  // }
+  const SubmitHandler = (e) => {
+    e.preventDefault()
+    console.log(username);
     
-    const user = {
-      username: username.value,
-      lastname: lastname.value,
-      email: email.value,
-      contact: contact.value
-    }
-    console.log(user);
+  }
 
-  };
+
 
   return (
-    <div>
-      <form onSubmit={SumbitHandler}>
-
-      <input className='my-5 bg-gray-500' type="text" name='firstname' placeholder='firstname' /> <br />
-      <input className='my-5 bg-gray-500' type="text" name='lastname' placeholder='lastname' /> <br />
-      <input className='my-5 bg-gray-500' type="text" name='username' placeholder='username' /> <br />
-      <input className='my-5 bg-gray-500' type="text" name='email' placeholder='email' /> <br />
-      <input className='my-5 bg-gray-500' type="text" name='contact' placeholder='contact' /> <br />
-      <button className='bg-red-400'>submit</button>
-      
+    <div className="p-5 bg-gray-600">
+      <form onSubmit={SubmitHandler}>
+      <input className=" rounded " type="username" name="username" placeholder="username"
+       onChange={(e) => setusername(e.target.value)}
+       value={username}/>
+       <br /><br />
+      <button className="rounded bg-blue-700 p-0.5 text-white">submit</button>
       </form>
-      
     </div>
   )
 }
